@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variable Velocity — Team 36397</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root{
+    --ink:#0a0a0c;
+    --surface:#141519;
+    --surface-2:#1c1d22;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --red:#e8102b;
+    --red-dim:#8f0c1c;
+    --ember:#ff5a3c;
+    --amber:#ff8a1e;
+    --steel:#888d97;
+    --fog:#c7cad1;
+    --white:#f5f5f7;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+  }
+  h1,h2,h3,h4{font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:.01em;text-transform:uppercase;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--red);color:#fff;}
+  :focus-visible{outline:2px solid var(--ember);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    border-bottom:1px solid var(--line);
+    background:rgba(10,10,12,.82);
+    backdrop-filter:blur(10px);
+  }
+  .nav{
+    max-width:1180px;margin:0 auto;padding:0 32px;
+    height:72px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:38px;height:38px;flex-shrink:0;
+  }
+  .brand-mark img{width:100%;height:100%;object-fit:contain;}
+  .brand-name{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.03em;text-transform:uppercase;}
+  .brand-name span{color:var(--red);}
+  nav.links{display:flex;gap:2px;}
+  nav.links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--fog);padding:10px 16px;position:relative;transition:color .2s;
+  }
+  nav.links a:hover{color:var(--white);}
+  nav.links a::after{
+    content:'';position:absolute;left:16px;right:16px;bottom:6px;height:1px;
+    background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .25s;
+  }
+  nav.links a:hover::after{transform:scaleX(1);}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+    border:1px solid var(--line-strong);padding:9px 18px;text-transform:uppercase;
+    transition:border-color .2s, background .2s;
+  }
+  .nav-cta:hover{border-color:var(--red);background:rgba(232,16,43,.08);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:140px 0 80px;overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% 15%, rgba(232,16,43,.14), transparent 60%),
+      linear-gradient(var(--ink), var(--ink));
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background-image:
+      repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 120px),
+      repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 120px);
+    opacity:.35;
+    mask-image:linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
+  }
+  .hero-watermark{
+    position:absolute;top:50%;right:-8%;width:640px;max-width:60vw;
+    transform:translateY(-50%);opacity:.07;z-index:1;pointer-events:none;
+    animation:spin 60s linear infinite;
+  }
+  @keyframes spin{from{transform:translateY(-50%) rotate(0deg);}to{transform:translateY(-50%) rotate(360deg);}}
+  .chassis-tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.14em;
+    color:var(--steel);border:1px solid var(--line-strong);padding:7px 14px;
+    text-transform:uppercase;margin-bottom:28px;
+  }
+  .chassis-tag b{color:var(--red);font-weight:600;}
+  .dot-live{width:7px;height:7px;background:var(--ember);border-radius:50%;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,90,60,.5);}50%{opacity:.55;box-shadow:0 0 0 6px rgba(255,90,60,0);}}
+
+  .motto{
+    display:flex;align-items:center;gap:14px;margin:2px 0 22px;
+    font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .motto span{display:flex;align-items:center;gap:14px;}
+  .motto b{font-weight:600;}
+  .motto .m1 b{color:var(--red);}
+  .motto .m2 b{color:var(--amber);}
+  .motto .m3 b{color:var(--white);}
+  .motto .m1,.motto .m2,.motto .m3{color:var(--steel);}
+  .motto .sep{color:var(--line-strong);font-weight:400;}
+
+  .hero h1{
+    font-size:clamp(3.2rem, 7.5vw, 6rem);
+    line-height:.92;
+    letter-spacing:0;
+  }
+  .hero h1 .line2{color:transparent;-webkit-text-stroke:1.5px var(--white);display:block;}
+  .hero h1 .accent{color:var(--red);}
+  .hero-sub{
+    max-width:480px;margin-top:26px;color:var(--fog);font-size:1.05rem;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:15px 26px;display:inline-flex;align-items:center;gap:10px;transition:all .2s;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--red);color:#fff;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);}
+  .btn-primary:hover{background:var(--ember);}
+  .btn-ghost{border-color:var(--line-strong);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--red);color:var(--red);}
+
+  .telemetry-panel{
+    position:relative;border:1px solid var(--line-strong);background:var(--surface);
+    padding:26px 24px 20px;
+  }
+  .telemetry-panel::before,.telemetry-panel::after{
+    content:'';position:absolute;width:14px;height:14px;border-color:var(--red);border-style:solid;
+  }
+  .telemetry-panel::before{top:-1px;left:-1px;border-width:2px 0 0 2px;}
+  .telemetry-panel::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+  .telemetry-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+  .telemetry-head .eyebrow{color:var(--steel);}
+  .velocity-readout{
+    font-family:'JetBrains Mono',monospace;font-weight:600;font-size:3.2rem;color:var(--white);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .velocity-readout span{font-size:1rem;color:var(--steel);font-weight:400;}
+  .graph-svg{width:100%;height:120px;display:block;margin-top:16px;}
+  .graph-path{fill:none;stroke:var(--red);stroke-width:2;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.2s ease-out forwards .3s;}
+  .graph-fill{fill:url(#velGrad);opacity:0;animation:fadein 1s ease-out forwards 1.6s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadein{to{opacity:1;}}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:18px;border-top:1px solid var(--line);}
+  .stat-row div{background:var(--surface);padding:14px 4px 4px;}
+  .stat-row .num{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1.3rem;color:var(--ember);}
+  .stat-row .lbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel);text-transform:uppercase;}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:120px 0;position:relative;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.9rem);margin-top:10px;}
+  .section-head p{color:var(--fog);margin-top:16px;font-size:1.02rem;}
+  .divider{height:1px;background:var(--line);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+  .about-copy p{color:var(--fog);margin-bottom:18px;}
+  .about-copy p:last-child{margin-bottom:0;}
+  .spec-card{border:1px solid var(--line);background:var(--surface);padding:32px;}
+  .spec-list{display:grid;gap:0;}
+  .spec-list div{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.85rem;}
+  .spec-list div:last-child{border-bottom:none;}
+  .spec-list dt{color:var(--steel);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;}
+  .spec-list dd{color:var(--white);font-weight:500;}
+
+  /* ---------- VALUES ---------- */
+  .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .value-card{background:var(--ink);padding:36px 30px;position:relative;transition:background .25s;}
+  .value-card:hover{background:var(--surface);}
+  .value-card .vnum{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:.78rem;letter-spacing:.1em;}
+  .value-card h3{font-size:1.3rem;margin:14px 0 10px;}
+  .value-card p{color:var(--steel);font-size:.92rem;}
+
+  /* ---------- JOURNEY / TIMELINE ---------- */
+  .timeline{position:relative;padding-left:32px;border-left:1px solid var(--line-strong);}
+  .tl-item{position:relative;padding-bottom:48px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:'';position:absolute;left:-37px;top:4px;width:11px;height:11px;background:var(--ink);
+    border:2px solid var(--red);border-radius:50%;
+  }
+  .tl-year{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:.8rem;letter-spacing:.1em;}
+  .tl-item h3{font-size:1.4rem;margin:8px 0 8px;}
+  .tl-item p{color:var(--fog);max-width:640px;}
+
+  /* ---------- TEAM ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .team-card{border:1px solid var(--line);background:var(--surface);overflow:hidden;transition:border-color .25s, transform .25s;}
+  .team-card:hover{border-color:var(--red);transform:translateY(-4px);}
+  .team-photo{
+    aspect-ratio:1/1;background:
+      linear-gradient(160deg, var(--surface-2), var(--surface)),
+      repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 14px);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Rajdhani',sans-serif;font-size:2.4rem;font-weight:700;color:var(--line-strong);
+    border-bottom:1px solid var(--line);
+  }
+  .team-info{padding:16px 18px 20px;}
+  .team-info h3{font-size:1.1rem;letter-spacing:0;}
+  .team-info .role{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ember);letter-spacing:.06em;margin-top:6px;text-transform:uppercase;}
+
+  /* ---------- OUTREACH ---------- */
+  .outreach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .outreach-card{border:1px solid var(--line);padding:30px 28px;background:var(--surface);}
+  .outreach-card .eyebrow{color:var(--steel);}
+  .outreach-card h3{font-size:1.25rem;margin:10px 0 14px;}
+  .outreach-card ul{padding-left:0;list-style:none;color:var(--fog);font-size:.92rem;}
+  .outreach-card li{padding:6px 0 6px 18px;position:relative;}
+  .outreach-card li::before{content:'—';position:absolute;left:0;color:var(--red);}
+
+  /* ---------- RESOURCES ---------- */
+  .resource-list{border-top:1px solid var(--line);}
+  .resource-item{
+    display:flex;justify-content:space-between;align-items:center;gap:24px;
+    padding:26px 0;border-bottom:1px solid var(--line);
+    transition:padding-left .2s;
+  }
+  .resource-item:hover{padding-left:10px;}
+  .resource-item .rtitle{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:1.2rem;text-transform:none;}
+  .resource-item .rdesc{color:var(--steel);font-size:.88rem;margin-top:4px;}
+  .resource-item .rlink{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--red);white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;}
+
+  /* ---------- SUPPORT ---------- */
+  .support{
+    background:var(--surface);border:1px solid var(--line);padding:60px;
+    display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center;
+  }
+  .support h2{font-size:clamp(1.8rem,3vw,2.4rem);}
+  .support p{color:var(--fog);margin-top:16px;}
+  .support-stats{display:grid;gap:20px;}
+  .support-stats div{border-left:2px solid var(--red);padding-left:16px;}
+  .support-stats .num{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:600;}
+  .support-stats .lbl{color:var(--steel);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:8px;}
+  .field input,.field textarea{
+    width:100%;background:var(--surface);border:1px solid var(--line-strong);color:var(--white);
+    padding:13px 14px;font-family:'Inter',sans-serif;font-size:.95rem;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--red);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .contact-info{display:flex;flex-direction:column;justify-content:space-between;}
+  .contact-info .item{border-top:1px solid var(--line);padding:18px 0;}
+  .contact-info .item:first-child{border-top:none;}
+  .contact-info .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--steel);letter-spacing:.1em;text-transform:uppercase;}
+  .contact-info .val{font-size:1.15rem;margin-top:6px;}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .foot-links{display:flex;gap:22px;}
+  .foot-links a{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.05em;}
+  .foot-links a:hover{color:var(--white);}
+  .foot-note{color:var(--steel);font-family:'JetBrains Mono',monospace;font-size:.72rem;}
+
+  @media (max-width:980px){
+    nav.links,.nav-cta{display:none;}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .values-grid,.outreach-grid{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .support{grid-template-columns:1fr;padding:36px;}
+    .row2{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .team-grid{grid-template-columns:1fr 1fr;}
+    .wrap{padding:0 20px;}
+    section{padding:80px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <div class="brand-mark"><img src="logo.png" alt="Variable Velocity logo"></div>
+      <div class="brand-name">VARIABLE <span>VELOCITY</span></div>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#team">Team</a>
+      <a href="#outreach">Outreach</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#support" class="nav-cta">Support Us</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:140px;">
+    <img class="hero-watermark" src="logo.png" alt="">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="chassis-tag"><span class="dot-live"></span> FTC TEAM ID <b>#36397</b> · SEASON 2025–26</div>
+        <div class="motto">
+          <span class="m1"><b>Dream</b></span><span class="sep">·</span>
+          <span class="m2"><b>Build</b></span><span class="sep">·</span>
+          <span class="m3"><b>Ascend</b></span><span class="sep">.</span>
+        </div>
+        <h1>VARIABLE<span class="line2">VELOCITY<span class="accent">.</span></span></h1>
+        <p class="hero-sub">A student-built FIRST Tech Challenge team engineering for the moment the game changes speed. We design, iterate, and drive — not for a single fast lap, but for control at every velocity.</p>
+        <div class="hero-actions">
+          <a href="#team" class="btn btn-primary">Meet the Team →</a>
+          <a href="#journey" class="btn btn-ghost">Our Season</a>
+        </div>
+      </div>
+
+      <div class="telemetry-panel">
+        <div class="telemetry-head">
+          <span class="eyebrow">Live Telemetry</span>
+          <span class="mono" style="font-size:.7rem;color:var(--steel);">SEC 07 · MATCH REPLAY</span>
+        </div>
+        <div class="velocity-readout">36,397 <span>TEAM NO.</span></div>
+        <svg class="graph-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="velGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8102b" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="#e8102b" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <polygon class="graph-fill" points="0,120 0,90 40,95 80,60 120,70 160,35 200,50 240,20 280,40 320,15 360,30 400,10 400,120"/>
+          <polyline class="graph-path" points="0,90 40,95 80,60 120,70 160,35 200,50 240,20 280,40 320,15 360,30 400,10"/>
+        </svg>
+        <div class="stat-row">
+          <div><div class="num">14</div><div class="lbl">Members</div></div>
+          <div><div class="num" style="color:var(--amber);">2</div><div class="lbl">Awards</div></div>
+          <div><div class="num">R1</div><div class="lbl">Rookie Yr</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">About the Team</span>
+        <h2 style="margin-top:10px;font-size:clamp(1.9rem,3.5vw,2.6rem);">Built for the turns, not just the straightaway.</h2>
+        <p>Variable Velocity is FIRST Tech Challenge Team 36397 — a student-run team that treats every match like a system with changing conditions. We design robots that hold precision whether they're moving fast, slow, or somewhere in between.</p>
+        <p>Our process is iterative and CAD-first: prototype, test on the field, measure what actually happened, and redesign. We value the data as much as the result, and we document our reasoning so the next build season starts smarter than the last.</p>
+        <p>Off the field, we bring that same engineering mindset to our community — running workshops, mentoring younger teams, and making STEM feel approachable to students who haven't found their way into it yet.</p>
+      </div>
+      <div class="spec-card">
+        <span class="eyebrow" style="color:var(--steel);">Team Spec Sheet</span>
+        <div class="spec-list" style="margin-top:18px;">
+          <div><dt>Program</dt><dd>FIRST Tech Challenge</dd></div>
+          <div><dt>Team Number</dt><dd>36397</dd></div>
+          <div><dt>Team Name</dt><dd>Variable Velocity</dd></div>
+          <div><dt>Design Method</dt><dd>CAD-First / Iterative</dd></div>
+          <div><dt>Focus</dt><dd>Precision at Every Speed</dd></div>
+          <div><dt>Home Base</dt><dd>[Region / City]</dd></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- MISSION & VALUES -->
+  <section id="mission">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Mission &amp; Values</span>
+        <h2>What drives the build.</h2>
+        <p>Three principles steer every design decision, every mentorship session, and every match strategy we run.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="vnum">PRECISION</span>
+          <h3>Control Over Chaos</h3>
+          <p>Speed means nothing without control. We engineer for consistency across every condition the game throws at us.</p>
+        </div>
+        <div class="value-card">
+          <span class="vnum">ITERATION</span>
+          <h3>Test, Measure, Rebuild</h3>
+          <p>Every prototype is a hypothesis. We track what fails as carefully as what works, and we're not precious about starting over.</p>
+        </div>
+        <div class="value-card">
+          <span class="vnum">ACCESS</span>
+          <h3>Open the Track</h3>
+          <p>We mentor newer teams and run outreach because the fastest way to grow the sport is to bring more people onto the field.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Journey</span>
+        <h2>The season so far.</h2>
+        <p>A running log of milestones as Variable Velocity builds toward the DECODE season.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2025 · FOUNDING</div>
+          <h3>Team 36397 is chartered</h3>
+          <p>Variable Velocity forms as a rookie FIRST Tech Challenge team, assembling a build, code, and outreach crew ahead of preseason prototyping.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2025 · PRESEASON</div>
+          <h3>Chassis and drivetrain prototyping</h3>
+          <p>Early CAD iterations focus on a drivetrain that holds accuracy across variable speeds — the design principle the team is named for.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2025–26 · DECODE SEASON</div>
+          <h3>Qualifying tournaments</h3>
+          <p>[Add your qualifier results, awards, and rankings here as your season progresses.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Meet the Team</span>
+        <h2>The people behind the build.</h2>
+        <p>Replace these placeholder cards with your roster, photos, and roles.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-photo">AB</div><div class="team-info"><h3>Member Name</h3><div class="role">Builder · CAD</div></div></div>
+        <div class="team-card"><div class="team-photo">CD</div><div class="team-info"><h3>Member Name</h3><div class="role">Coder</div></div></div>
+        <div class="team-card"><div class="team-photo">EF</div><div class="team-info"><h3>Member Name</h3><div class="role">Driver</div></div></div>
+        <div class="team-card"><div class="team-photo">GH</div><div class="team-info"><h3>Member Name</h3><div class="role">Team Lead</div></div></div>
+        <div class="team-card"><div class="team-photo">IJ</div><div class="team-info"><h3>Member Name</h3><div class="role">Technical Writer</div></div></div>
+        <div class="team-card"><div class="team-photo">KL</div><div class="team-info"><h3>Member Name</h3><div class="role">Builder</div></div></div>
+        <div class="team-card"><div class="team-photo">MN</div><div class="team-info"><h3>Member Name</h3><div class="role">Outreach</div></div></div>
+        <div class="team-card"><div class="team-photo">OP</div><div class="team-info"><h3>Member Name</h3><div class="role">CAD</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- OUTREACH -->
+  <section id="outreach">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Community Outreach</span>
+        <h2>Bringing more people onto the field.</h2>
+      </div>
+      <div class="outreach-grid">
+        <div class="outreach-card">
+          <span class="eyebrow">Program</span>
+          <h3>FIRST Info Sessions</h3>
+          <ul>
+            <li>Walk through the FIRST program pathway</li>
+            <li>Live robot demos and Q&amp;A</li>
+            <li>Open to students, parents, educators</li>
+          </ul>
+        </div>
+        <div class="outreach-card">
+          <span class="eyebrow">Program</span>
+          <h3>Rookie Team Mentorship</h3>
+          <ul>
+            <li>Guide new teams through design process</li>
+            <li>Support build, code, and strategy</li>
+            <li>Share what we've learned the hard way</li>
+          </ul>
+        </div>
+        <div class="outreach-card">
+          <span class="eyebrow">Program</span>
+          <h3>STEM Workshops</h3>
+          <ul>
+            <li>Hands-on robotics for beginners</li>
+            <li>Student-led instruction</li>
+            <li>[Add your program specifics here]</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Resources</span>
+        <h2>For teams, by teams.</h2>
+      </div>
+      <div class="resource-list">
+        <div class="resource-item">
+          <div><div class="rtitle">FTC Game &amp; Season Materials</div><div class="rdesc">Current DECODE season rules and updates from FIRST.</div></div>
+          <a class="rlink" href="https://ftc-resources.firstinspires.org/ftc/game" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="resource-item">
+          <div><div class="rtitle">FTC Team Resources</div><div class="rdesc">StarterBot guides, technical docs, and build checklists.</div></div>
+          <a class="rlink" href="https://ftc-resources.firstinspires.org/ftc/team" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="resource-item">
+          <div><div class="rtitle">Programming Resources</div><div class="rdesc">Get up to speed on FTC control system programming.</div></div>
+          <a class="rlink" href="https://www.firstinspires.org/resources/library/ftc/programming-resources" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="resource-item">
+          <div><div class="rtitle">goBILDA</div><div class="rdesc">Hardware, electronics, and drivetrain components.</div></div>
+          <a class="rlink" href="https://www.gobilda.com/" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+        <div class="resource-item">
+          <div><div class="rtitle">REV Robotics</div><div class="rdesc">Control system electronics and hardware.</div></div>
+          <a class="rlink" href="https://www.revrobotics.com/" target="_blank" rel="noopener">Visit ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- SUPPORT -->
+  <section id="support">
+    <div class="wrap">
+      <div class="support">
+        <div>
+          <span class="eyebrow">Support the Team</span>
+          <h2>Every build season runs on parts, travel, and time.</h2>
+          <p>Variable Velocity is a student-led team funded through community and sponsor support. Donations and in-kind contributions go directly toward parts, competition fees, and outreach programming.</p>
+          <div class="hero-actions" style="margin-top:28px;">
+            <a href="#contact" class="btn btn-primary">Become a Sponsor →</a>
+          </div>
+        </div>
+        <div class="support-stats">
+          <div><div class="num">[$ ]</div><div class="lbl">Season Fundraising Goal</div></div>
+          <div><div class="num">[EIN]</div><div class="lbl">Nonprofit / Fiscal Sponsor ID</div></div>
+          <div><div class="num">100%</div><div class="lbl">Goes to Team Programs</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Get in Touch</span>
+        <h2 style="margin-top:10px;font-size:clamp(1.9rem,3.5vw,2.6rem);">Reach out to Team 36397.</h2>
+        <form style="margin-top:32px;" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').textContent='Sent ✓';">
+          <div class="row2">
+            <div class="field"><label for="fn">First Name</label><input id="fn" type="text" required></div>
+            <div class="field"><label for="ln">Last Name</label><input id="ln" type="text" required></div>
+          </div>
+          <div class="field"><label for="em">Email</label><input id="em" type="email" required></div>
+          <div class="field"><label for="sub">Subject</label><input id="sub" type="text"></div>
+          <div class="field"><label for="msg">Message</label><textarea id="msg" rows="4"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">Send Message →</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="item"><div class="lbl">Email</div><div class="val">team.variablevelocity@gmail.com</div></div>
+        <div class="item"><div class="lbl">Phone</div><div class="val">[Team Phone Number]</div></div>
+        <div class="item"><div class="lbl">Location</div><div class="val">[City, State]</div></div>
+        <div class="item"><div class="lbl">Follow</div><div class="val">Instagram · YouTube</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="foot-note">© 2026 Variable Velocity — FTC Team 36397 · Dream. Build. Ascend.</div>
+    <div class="foot-links">
+      <a href="#top">Home</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
