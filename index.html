@@ -267,6 +267,25 @@
   .outreach-card li{padding:6px 0 6px 18px;position:relative;}
   .outreach-card li::before{content:'—';position:absolute;left:0;color:var(--red);}
 
+  .outreach-program{border:1px solid var(--line-strong);border-top:3px solid var(--red);background:var(--surface);margin-bottom:48px;overflow:hidden;box-shadow:0 4px 24px rgba(255,10,36,.1);}
+  .outreach-program:last-child{margin-bottom:0;}
+  .outreach-program-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .outreach-program-text{padding:40px 38px;display:flex;flex-direction:column;justify-content:center;}
+  .outreach-program-text h3{font-size:1.6rem;margin:10px 0 18px;color:var(--white);}
+  .outreach-program-text p{color:var(--fog);font-size:.95rem;line-height:1.7;margin-bottom:14px;}
+  .outreach-program-text p:last-child{margin-bottom:0;}
+  .outreach-program-text ul{padding-left:0;list-style:none;color:var(--fog);font-size:.92rem;margin-top:8px;}
+  .outreach-program-text li{padding:6px 0 6px 18px;position:relative;}
+  .outreach-program-text li::before{content:'—';position:absolute;left:0;color:var(--red);}
+  .outreach-photos{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);min-height:360px;}
+  .outreach-photos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+  .outreach-photos img:hover{transform:scale(1.03);}
+  .outreach-photos .photo-slot{overflow:hidden;background:var(--surface-2);}
+  @media (max-width:980px){
+    .outreach-program-body{grid-template-columns:1fr;}
+    .outreach-photos{min-height:260px;}
+  }
+
   /* ---------- RESOURCES ---------- */
   .resource-list{border-top:1px solid var(--line);}
   .resource-item{
@@ -543,36 +562,57 @@
       <div class="section-head">
         <span class="eyebrow fade-in">Community Outreach</span>
         <h2 class="fade-in fade-in-delay-1">Bringing more people onto the field.</h2>
+        <p class="fade-in fade-in-delay-2">We believe STEM should be accessible to everyone. From summer workshops that recruit the next generation of builders to inclusive teaching sessions for special needs students, Variable Velocity is committed to opening doors — not just winning matches.</p>
       </div>
-      <div class="outreach-grid">
-        <div class="outreach-card fade-in fade-in-delay-1">
-          <span class="eyebrow fade-in fade-in-delay-2">Program</span>
-          <h3 class="fade-in fade-in-delay-3">FIRST Info Sessions</h3>
-          <ul>
-            <li class="fade-in fade-in-delay-3">Walk through the FIRST program pathway</li>
-            <li class="fade-in fade-in-delay-4">Live robot demos and Q&amp;A</li>
-            <li class="fade-in fade-in-delay-5">Open to students, parents, educators</li>
-          </ul>
-        </div>
-        <div class="outreach-card fade-in fade-in-delay-2">
-          <span class="eyebrow fade-in fade-in-delay-3">Program</span>
-          <h3 class="fade-in fade-in-delay-4">Rookie Team Mentorship</h3>
-          <ul>
-            <li class="fade-in fade-in-delay-4">Guide new teams through design process</li>
-            <li class="fade-in fade-in-delay-5">Support build, code, and strategy</li>
-            <li class="fade-in fade-in-delay-6">Share what we've learned the hard way</li>
-          </ul>
-        </div>
-        <div class="outreach-card fade-in fade-in-delay-3">
-          <span class="eyebrow fade-in fade-in-delay-4">Program</span>
-          <h3 class="fade-in fade-in-delay-5">STEM Workshops</h3>
-          <ul>
-            <li class="fade-in fade-in-delay-5">Hands-on robotics for beginners</li>
-            <li class="fade-in fade-in-delay-6">Student-led instruction</li>
-            <li class="fade-in fade-in-delay-7">[Add your program specifics here]</li>
-          </ul>
+
+      <!-- Summer Teaching Program -->
+      <div class="outreach-program fade-in fade-in-delay-1">
+        <div class="outreach-program-body">
+          <div class="outreach-program-text">
+            <span class="eyebrow">Summer Program</span>
+            <h3>Summer Shadow — Recruiting the Next Generation</h3>
+            <p>During summer break, Variable Velocity opened its doors to younger students through our Summer Shadow program. We invited kids from the community into our workshop to experience firsthand what a robotics team looks like — from CAD design to hands-on building.</p>
+            <p>Team members led interactive sessions where new students learned the basics of coding, 3D modeling, and mechanical assembly. The goal was simple: spark curiosity and show kids that robotics is for everyone, not just the ones who already know how to build.</p>
+            <ul>
+              <li>Recruited new students through community outreach and word of mouth</li>
+              <li>Taught coding fundamentals, CAD basics, and robot building</li>
+              <li>Hands-on sessions in our team workshop with real FTC components</li>
+              <li>Several participants joined our team for the upcoming season</li>
+            </ul>
+          </div>
+          <div class="outreach-photos">
+            <div class="photo-slot"><img src="Summer%20Shadow/IMG_0885.jpeg" alt="Summer Shadow students learning to code on laptops"></div>
+            <div class="photo-slot"><img src="Summer%20Shadow/Build_SummerKids.jpeg" alt="Kids building together during Summer Shadow workshop"></div>
+            <div class="photo-slot"><img src="Summer%20Shadow/IMG_0886.jpeg" alt="Summer Shadow workshop with multiple learning stations"></div>
+            <div class="photo-slot"><img src="Summer%20Shadow/Summer_Shadow.jpeg" alt="Full view of the Summer Shadow teaching session"></div>
+          </div>
         </div>
       </div>
+
+      <!-- FCSN Special Needs Teaching -->
+      <div class="outreach-program fade-in fade-in-delay-2">
+        <div class="outreach-program-body">
+          <div class="outreach-photos">
+            <div class="photo-slot"><img src="FCSN/FCSN%20Teaching.jpeg" alt="Team member teaching robotics building at FCSN"></div>
+            <div class="photo-slot"><img src="FCSN/IMG_0899.jpeg" alt="Presenting robot designs to FCSN students"></div>
+            <div class="photo-slot"><img src="FCSN/IMG_0900.jpeg" alt="Team members helping FCSN students build with kits"></div>
+            <div class="photo-slot"><img src="FCSN/IMG_0902.jpeg" alt="FCSN students testing their completed robot builds"></div>
+          </div>
+          <div class="outreach-program-text">
+            <span class="eyebrow">Inclusive STEM</span>
+            <h3>FCSN — Special Needs Robotics Teaching</h3>
+            <p>Variable Velocity partnered with FCSN (Friends of Children with Special Needs) to bring robotics education to students with special needs. Our team members volunteered as instructors, leading structured building sessions in a classroom setting at the FCSN facility.</p>
+            <p>We taught step-by-step robot assembly using building kits, with presentations projected on screen and one-on-one guidance at each table. Students followed along to build small robots, learning mechanical concepts and experiencing the thrill of seeing something they built come to life.</p>
+            <ul>
+              <li>Partnered with FCSN to teach robotics to special needs students</li>
+              <li>Led classroom sessions with screen presentations and hands-on kits</li>
+              <li>Provided individual guidance and adapted instruction for each learner</li>
+              <li>Students built and tested their own working robots</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
