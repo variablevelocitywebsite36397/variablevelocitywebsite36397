@@ -703,14 +703,16 @@
       <div>
         <span class="eyebrow fade-in">Get in Touch</span>
         <h2 class="fade-in fade-in-delay-1" style="margin-top:10px;font-size:clamp(1.9rem,3.5vw,2.6rem);">Reach out to Team 36397.</h2>
-        <form style="margin-top:32px;" onsubmit="event.preventDefault(); this.querySelector('.btn-primary').textContent='Sent ✓';">
+        <form style="margin-top:32px;" action="https://formspree.io/f/variablevelocityftc@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New message from Variable Velocity website">
+          <input type="hidden" name="_next" value="https://variablevelocitywebsite36397.github.io/variablevelocitywebsite36397/#contact">
           <div class="row2">
-            <div class="field fade-in fade-in-delay-2"><label for="fn">First Name</label><input id="fn" type="text" required></div>
-            <div class="field fade-in fade-in-delay-3"><label for="ln">Last Name</label><input id="ln" type="text" required></div>
+            <div class="field fade-in fade-in-delay-2"><label for="fn">First Name</label><input id="fn" name="first-name" type="text" required></div>
+            <div class="field fade-in fade-in-delay-3"><label for="ln">Last Name</label><input id="ln" name="last-name" type="text" required></div>
           </div>
-          <div class="field fade-in fade-in-delay-3"><label for="em">Email</label><input id="em" type="email" required></div>
-          <div class="field fade-in fade-in-delay-4"><label for="sub">Subject</label><input id="sub" type="text"></div>
-          <div class="field fade-in fade-in-delay-5"><label for="msg">Message</label><textarea id="msg" rows="4"></textarea></div>
+          <div class="field fade-in fade-in-delay-3"><label for="em">Email</label><input id="em" name="_replyto" type="email" required></div>
+          <div class="field fade-in fade-in-delay-4"><label for="sub">Subject</label><input id="sub" name="subject" type="text"></div>
+          <div class="field fade-in fade-in-delay-5"><label for="msg">Message</label><textarea id="msg" name="message" rows="4"></textarea></div>
           <button type="submit" class="btn btn-primary fade-in fade-in-delay-6" style="border:none;cursor:pointer;">Send Message →</button>
         </form>
       </div>
