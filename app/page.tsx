@@ -298,34 +298,44 @@ export default function Page() {
               <h2 className="fade-in fade-in-delay-1">Support our mission.</h2>
             </div>
             <div className="donate-wrap fade-in fade-in-delay-2">
-              <div className="donate-left">
-                <h2>{donate.heading}</h2>
-                <a href="#contact" className="donate-btn">Donate Now</a>
-                <div className="zelle-card">
-                  <div className="zelle-title">Send Money with Zelle®</div>
-                  <div className="zelle-name">{donate.zelleName}</div>
-                  <img src={donate.qrCode} alt={`Zelle QR Code for ${donate.zelleName}`} />
-                  <div className="zelle-logo">Zelle®</div>
+              <div className="donate-info">
+                <div className="org-name">{donate.orgName}</div>
+                <div className="org-meta">
+                  <span className="org-detail">EIN: <span className="ein">{donate.ein}</span></span>
+                  <span className="org-detail">{donate.orgType}</span>
+                </div>
+                <div className="donate-section">
+                  <div className="label-head">Mission</div>
+                  <p>{donate.mission}</p>
+                </div>
+                <div className="donate-section">
+                  <div className="label-head">Vision</div>
+                  <p>{donate.vision}</p>
+                </div>
+                <div className="donate-section">
+                  <div className="label-head">Other Ways to Support</div>
+                  <ul>
+                    <li><b>Corporate Partnerships</b> — Long-term collaboration and support</li>
+                    <li><b>In-kind Donations</b> — Donate equipment and services</li>
+                    <li><b>Volunteering &amp; Mentoring</b> — Share your expertise and inspire young minds</li>
+                  </ul>
+                </div>
+                <div className="donate-actions">
+                  <a href="#contact" className="donate-btn">Get in Touch</a>
+                  <span className="tax-note">All contributions are 100% tax-deductible</span>
                 </div>
               </div>
-              <div className="donate-right">
-                <div className="org-name">{donate.orgName}</div>
-                <p className="org-detail">
-                  Employer Identification Number : <span className="ein">{donate.ein}</span>
-                </p>
-                <p className="org-detail">{donate.orgType}</p>
-                <div className="label-head">Mission Statement :</div>
-                <p>{donate.mission}</p>
-                <div className="label-head">Our Vision :</div>
-                <p>{donate.vision}</p>
-                <div className="label-head">Other Ways to Support Our Students :</div>
-                <ul>
-                  <li><b>Corporate Partnerships</b> - Long-term collaboration and support</li>
-                  <li><b>In-kind Donations and Support</b> - Donate equipment and services</li>
-                  <li><b>Volunteering and Mentoring</b> - Share your expertise and inspire young minds</li>
-                </ul>
-                <a href="#contact" className="donate-contact">Contact Us</a>
-                <div className="tax-note">Note: Your contributions are 100% tax-deductible</div>
+              <div className="donate-qr">
+                <div className="zelle-card">
+                  <div className="zelle-header">
+                    <div className="zelle-logo">Zelle<span>®</span></div>
+                    <div className="zelle-subtitle">Scan to donate</div>
+                  </div>
+                  <div className="zelle-qr-frame">
+                    <img src={donate.qrCode} alt={`Zelle QR Code for ${donate.zelleName}`} />
+                  </div>
+                  <div className="zelle-name">{donate.zelleName}</div>
+                </div>
               </div>
             </div>
           </div>
