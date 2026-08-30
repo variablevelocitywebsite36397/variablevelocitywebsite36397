@@ -5,7 +5,7 @@
     "motto1": "Dream",
     "motto2": "Build",
     "motto3": "Ascend",
-    "title1": "VARIABLE",
+    "title1": "tiki",
     "title2": "VELOCITY",
     "subtitle": "A student-built FIRST Tech Challenge team engineering for the moment the game changes speed. We design, iterate, and drive — not for a single fast lap, but for control at every velocity.",
     "ctaPrimary": "Meet the Team →",
@@ -18,12 +18,30 @@
     "paragraph2": "Our process is iterative and CAD-first: prototype, test on the field, measure what actually happened, and redesign. We value the data as much as the result, and we document our reasoning so the next build season starts smarter than the last.",
     "paragraph3": "Off the field, we bring that same engineering mindset to our community — running workshops, mentoring younger teams, and making STEM feel approachable to students who haven’t found their way into it yet.",
     "specs": [
-      { "label": "Program", "value": "FIRST Tech Challenge" },
-      { "label": "Team Number", "value": "36397" },
-      { "label": "Team Name", "value": "Variable Velocity" },
-      { "label": "Design Method", "value": "CAD-First / Iterative" },
-      { "label": "Focus", "value": "Precision at Every Speed" },
-      { "label": "Home Base", "value": "Fremont, CA" }
+      {
+        "label": "Program",
+        "value": "FIRST Tech Challenge"
+      },
+      {
+        "label": "Team Number",
+        "value": "36397"
+      },
+      {
+        "label": "Team Name",
+        "value": "Variable Velocity"
+      },
+      {
+        "label": "Design Method",
+        "value": "CAD-First / Iterative"
+      },
+      {
+        "label": "Focus",
+        "value": "Precision at Every Speed"
+      },
+      {
+        "label": "Home Base",
+        "value": "Fremont, CA"
+      }
     ]
   },
   "values": {
