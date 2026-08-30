@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://variablevelocity.org/sitemap.xml

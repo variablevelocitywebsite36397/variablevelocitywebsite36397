@@ -1,0 +1,20 @@
+{
+  "title": "Summer Shadow — Recruiting the Next Generation",
+  "eyebrow": "Summer Program",
+  "description1": "During summer break, Variable Velocity opened its doors to younger students through our Summer Shadow program. We invited kids from the community into our workshop to experience firsthand what a robotics team looks like — from CAD design to hands-on building.",
+  "description2": "Team members led interactive sessions where new students learned the basics of coding, 3D modeling, and mechanical assembly. The goal was simple: spark curiosity and show kids that robotics is for everyone, not just the ones who already know how to build.",
+  "bullets": [
+    "Recruited new students through community outreach and word of mouth",
+    "Taught coding fundamentals, CAD basics, and robot building",
+    "Hands-on sessions in our team workshop with real FTC components",
+    "Several participants joined our team for the upcoming season"
+  ],
+  "photos": [
+    { "src": "/summer-shadow/IMG_0885.jpeg", "alt": "Summer Shadow students learning to code on laptops" },
+    { "src": "/summer-shadow/Build_SummerKids.jpeg", "alt": "Kids building together during Summer Shadow workshop" },
+    { "src": "/summer-shadow/IMG_0886.jpeg", "alt": "Summer Shadow workshop with multiple learning stations" },
+    { "src": "/summer-shadow/Summer_Shadow.jpeg", "alt": "Full view of the Summer Shadow teaching session" }
+  ],
+  "order": 1,
+  "photosFirst": false
+}

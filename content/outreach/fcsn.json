@@ -1,0 +1,20 @@
+{
+  "title": "FCSN — Special Needs Robotics Teaching",
+  "eyebrow": "Inclusive STEM",
+  "description1": "Variable Velocity partnered with FCSN (Friends of Children with Special Needs) to bring robotics education to students with special needs. Our team members volunteered as instructors, leading structured building sessions in a classroom setting at the FCSN facility.",
+  "description2": "We taught step-by-step robot assembly using building kits, with presentations projected on screen and one-on-one guidance at each table. Students followed along to build small robots, learning mechanical concepts and experiencing the thrill of seeing something they built come to life.",
+  "bullets": [
+    "Partnered with FCSN to teach robotics to special needs students",
+    "Led classroom sessions with screen presentations and hands-on kits",
+    "Provided individual guidance and adapted instruction for each learner",
+    "Students built and tested their own working robots"
+  ],
+  "photos": [
+    { "src": "/fcsn/FCSN Teaching.jpeg", "alt": "Team member teaching robotics building at FCSN" },
+    { "src": "/fcsn/IMG_0899.jpeg", "alt": "Presenting robot designs to FCSN students" },
+    { "src": "/fcsn/IMG_0900.jpeg", "alt": "Team members helping FCSN students build with kits" },
+    { "src": "/fcsn/IMG_0902.jpeg", "alt": "FCSN students testing their completed robot builds" }
+  ],
+  "order": 2,
+  "photosFirst": true
+}
