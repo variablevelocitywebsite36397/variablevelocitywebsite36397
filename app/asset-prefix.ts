@@ -1,4 +1,4 @@
-const basePath = process.env.NODE_ENV === "production" ? "/variablevelocitywebsite36397" : "";
+const basePath = process.env.PAGES_BASE_PATH || "";
 
 export function asset(path: string) {
   return `${basePath}${path}`;
