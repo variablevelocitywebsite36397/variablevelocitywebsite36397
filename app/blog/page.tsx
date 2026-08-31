@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import ScrollObserver from "../scroll-observer";
+import { asset } from "../asset-prefix";
 
 interface PostMeta {
   title: string;
@@ -32,7 +33,7 @@ function getPosts(): PostMeta[] {
         title: meta.title || f.replace(".mdx", ""),
         date: meta.date || "",
         excerpt: meta.excerpt || "",
-        coverImage: meta.coverImage || "/logo.png",
+        coverImage: asset(meta.coverImage || "/logo.png"),
         author: meta.author || "",
         slug: f.replace(".mdx", ""),
       };
@@ -50,7 +51,7 @@ export default function BlogPage() {
         <div className="nav">
           <Link href="/" className="brand">
             <div className="brand-mark">
-              <img src="/logo.png" alt="Variable Velocity logo" />
+              <img src={asset("/logo.png")} alt="Variable Velocity logo" />
             </div>
             <div className="brand-name">
               VARIABLE <span>VELOCITY</span>

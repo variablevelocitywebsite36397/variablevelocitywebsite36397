@@ -3,6 +3,7 @@ import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ScrollObserver from "../../scroll-observer";
+import { asset } from "../../asset-prefix";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -25,7 +26,7 @@ function getPost(slug: string) {
     title: meta.title || slug,
     date: meta.date || "",
     excerpt: meta.excerpt || "",
-    coverImage: meta.coverImage || "/logo.png",
+    coverImage: asset(meta.coverImage || "/logo.png"),
     author: meta.author || "",
     body,
   };
@@ -52,7 +53,7 @@ export default async function PostPage({ params }: Props) {
         <div className="nav">
           <Link href="/" className="brand">
             <div className="brand-mark">
-              <img src="/logo.png" alt="Variable Velocity logo" />
+              <img src={asset("/logo.png")} alt="Variable Velocity logo" />
             </div>
             <div className="brand-name">
               VARIABLE <span>VELOCITY</span>

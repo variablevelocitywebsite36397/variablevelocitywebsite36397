@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import ScrollObserver from "./scroll-observer";
+import { asset } from "./asset-prefix";
 
 function readJson(filepath: string) {
   return JSON.parse(fs.readFileSync(path.join(process.cwd(), filepath), "utf-8"));
@@ -31,7 +32,7 @@ export default function Page() {
         <div className="nav">
           <a href="#top" className="brand">
             <div className="brand-mark">
-              <img src="/logo.png" alt="Variable Velocity logo" />
+              <img src={asset("/logo.png")} alt="Variable Velocity logo" />
             </div>
             <div className="brand-name">
               VARIABLE <span>VELOCITY</span>
@@ -39,7 +40,7 @@ export default function Page() {
           </a>
           <nav className="links">
             <a href="#top">Home</a>
-            <a href="#team">Team</a>
+            <a href="#about">Team</a>
             <a href="#robot">Our Robot</a>
             <a href="#journey">Competition History</a>
             <a href="#outreach">Outreach</a>
@@ -52,7 +53,7 @@ export default function Page() {
       <main id="top">
         {/* HERO */}
         <section className="hero" style={{ paddingTop: 140 }}>
-          <img className="hero-watermark" src="/logo.png" alt="" />
+          <img className="hero-watermark" src={asset("/logo.png")} alt="" />
           <div className="wrap hero-grid">
             <div>
               <div className="chassis-tag fade-in">
@@ -94,7 +95,7 @@ export default function Page() {
               <p className="fade-in fade-in-delay-4">{about.paragraph3}</p>
             </div>
             <div className="about-photo fade-right fade-in-delay-1">
-              <img src={about.teamPhoto} alt="Variable Velocity team" />
+              <img src={asset(about.teamPhoto)} alt="Variable Velocity team" />
             </div>
           </div>
         </section>
@@ -129,7 +130,7 @@ export default function Page() {
             </div>
             <div className="fade-in fade-in-delay-2" style={{ marginBottom: 48, textAlign: "center" as const }}>
               <img
-                src={robot.image}
+                src={asset(robot.image)}
                 alt="Variable Velocity robot"
                 style={{
                   maxWidth: 600,
@@ -186,7 +187,7 @@ export default function Page() {
               {team.map((m: { name: string; role: string; photo: string }, i: number) => (
                 <div key={i} className={`team-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
                   <div className="team-photo">
-                    <img src={m.photo} alt={m.name} />
+                    <img src={asset(m.photo)} alt={m.name} />
                   </div>
                   <div className="team-info">
                     <h3>{m.name}</h3>
@@ -226,7 +227,7 @@ export default function Page() {
                     <div className="outreach-photos">
                       {program.photos.map((p, j) => (
                         <div key={j} className="photo-slot">
-                          <img src={p.src} alt={p.alt} />
+                          <img src={asset(p.src)} alt={p.alt} />
                         </div>
                       ))}
                     </div>
@@ -246,7 +247,7 @@ export default function Page() {
                     <div className="outreach-photos">
                       {program.photos.map((p, j) => (
                         <div key={j} className="photo-slot">
-                          <img src={p.src} alt={p.alt} />
+                          <img src={asset(p.src)} alt={p.alt} />
                         </div>
                       ))}
                     </div>
@@ -271,7 +272,7 @@ export default function Page() {
                     <p>{item.description}</p>
                   </div>
                   <div className="connect-photo">
-                    <img src={item.photo} alt={item.title} />
+                    <img src={asset(item.photo)} alt={item.title} />
                   </div>
                 </div>
               ))}
@@ -344,7 +345,7 @@ export default function Page() {
                     <div className="zelle-subtitle">Scan to donate</div>
                   </div>
                   <div className="zelle-qr-frame">
-                    <img src={donate.qrCode} alt={`Zelle QR Code for ${donate.zelleName}`} />
+                    <img src={asset(donate.qrCode)} alt={`Zelle QR Code for ${donate.zelleName}`} />
                   </div>
                   <div className="zelle-name">{donate.zelleName}</div>
                 </div>
