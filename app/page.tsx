@@ -164,11 +164,27 @@ export default function Page() {
               </p>
             </div>
             <div className="timeline">
-              {timeline.map((t: { year: string; title: string; description: string }, i: number) => (
+              {timeline.map((t: { year: string; title: string; description: string; image?: string; image2?: string }, i: number) => (
                 <div key={i} className={`tl-item fade-left fade-in-delay-${Math.min(i, 7)}`}>
                   <div className="tl-year">{t.year}</div>
                   <h3>{t.title}</h3>
                   <p>{t.description}</p>
+                  {t.image && (
+                    <div style={{ marginTop: 16, display: "flex", gap: 12, flexWrap: "wrap" }}>
+                      <img
+                        src={asset(t.image)}
+                        alt={t.title}
+                        style={{ maxWidth: t.image2 ? 260 : 520, width: "100%", borderRadius: 8, border: "1px solid var(--line-strong)", flex: "1 1 200px" }}
+                      />
+                      {t.image2 && (
+                        <img
+                          src={asset(t.image2)}
+                          alt={`${t.title} (2)`}
+                          style={{ maxWidth: 260, width: "100%", borderRadius: 8, border: "1px solid var(--line-strong)", flex: "1 1 200px" }}
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
