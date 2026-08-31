@@ -22,7 +22,7 @@ export default function Page() {
   const outreach = readCollection("content/outreach");
   const resources = readCollection("content/resources");
 
-  const { hero, about, values, robot, contact, donate } = data;
+  const { hero, about, values, robot, connect, contact, donate } = data;
 
   return (
     <>
@@ -93,18 +93,8 @@ export default function Page() {
               <p className="fade-in fade-in-delay-3">{about.paragraph2}</p>
               <p className="fade-in fade-in-delay-4">{about.paragraph3}</p>
             </div>
-            <div className="spec-card fade-right fade-in-delay-1">
-              <span className="eyebrow fade-in fade-in-delay-2" style={{ color: "var(--steel)" }}>
-                Team Spec Sheet
-              </span>
-              <div className="spec-list" style={{ marginTop: 18 }}>
-                {about.specs.map((s: { label: string; value: string }, i: number) => (
-                  <div key={i} className={`fade-in fade-in-delay-${Math.min(i + 2, 7)}`}>
-                    <dt>{s.label}</dt>
-                    <dd>{s.value}</dd>
-                  </div>
-                ))}
-              </div>
+            <div className="about-photo fade-right fade-in-delay-1">
+              <img src={about.teamPhoto} alt="Variable Velocity team" />
             </div>
           </div>
         </section>
@@ -264,6 +254,28 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* HOW WE CONNECT */}
+        <section id="connect">
+          <div className="wrap">
+            <div className="section-head" style={{ textAlign: "center" as const, maxWidth: "none" }}>
+              <h2 className="fade-in">{connect.heading}</h2>
+            </div>
+            <div className="connect-grid">
+              {connect.items.map((item: { title: string; description: string; photo: string }, i: number) => (
+                <div key={i} className={`connect-card fade-in fade-in-delay-${i + 1}`}>
+                  <div className="connect-text">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                  <div className="connect-photo">
+                    <img src={item.photo} alt={item.title} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
