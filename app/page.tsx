@@ -436,6 +436,20 @@ export default function Page() {
                   </a>
                 </div>
               </div>
+              <div className="ig-qr-card fade-right fade-in-delay-4">
+                <div className="ig-qr-header">
+                  <svg className="ig-qr-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="var(--red)" strokeWidth="1.8"/>
+                    <circle cx="12" cy="12" r="5" stroke="var(--red)" strokeWidth="1.8"/>
+                    <circle cx="17.5" cy="6.5" r="1.2" fill="var(--red)"/>
+                  </svg>
+                  <span className="ig-qr-label">Follow us on Instagram</span>
+                </div>
+                <div className="ig-qr-frame">
+                  <img src={asset("/instagram-qr.png")} alt="QR code for Variable Velocity Instagram" />
+                </div>
+                <div className="ig-qr-handle">@variablevelocityftc</div>
+              </div>
             </div>
           </div>
         </section>

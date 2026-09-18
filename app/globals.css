@@ -281,6 +281,18 @@ section:nth-of-type(even){background:linear-gradient(180deg, #282a2d 0%, #222326
 .contact-info .lbl{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--steel);letter-spacing:.1em;text-transform:uppercase;}
 .contact-info .val{font-size:1.15rem;margin-top:6px;color:var(--white);}
 
+.ig-qr-card{
+  margin-top:24px;border:1px solid var(--line-strong);border-top:3px solid var(--red);
+  background:var(--surface);padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px;
+  box-shadow:0 4px 24px rgba(255,10,36,.1);
+}
+.ig-qr-header{display:flex;align-items:center;gap:10px;}
+.ig-qr-icon{width:20px;height:20px;flex-shrink:0;}
+.ig-qr-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);}
+.ig-qr-frame{background:var(--white);border-radius:10px;padding:10px;line-height:0;}
+.ig-qr-frame img{width:160px;height:160px;display:block;}
+.ig-qr-handle{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--red);letter-spacing:.04em;font-weight:500;}
+
 footer{border-top:2px solid var(--red);padding:36px 0;background:linear-gradient(180deg, #282a2d 0%, #1e1f22 50%, #1a1b1d 100%);}
 .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .foot-links{display:flex;gap:22px;}
