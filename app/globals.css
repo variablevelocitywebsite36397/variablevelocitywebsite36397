@@ -194,6 +194,7 @@ section:nth-of-type(even){background:linear-gradient(180deg, #282a2d 0%, #222326
   border-bottom:1px solid var(--line);overflow:hidden;
 }
 .team-photo img{width:100%;height:100%;object-fit:cover;}
+.team-initial{font-size:4rem;font-weight:700;color:var(--fog);opacity:.5;}
 .team-info{padding:16px 18px 20px;}
 .team-info h3{font-size:1.1rem;letter-spacing:0;color:var(--white);}
 .team-info .role{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ember);letter-spacing:.06em;margin-top:6px;text-transform:uppercase;}

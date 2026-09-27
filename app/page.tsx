@@ -197,13 +197,17 @@ export default function Page() {
             <div className="section-head">
               <span className="eyebrow fade-in">Meet the Team</span>
               <h2 className="fade-in fade-in-delay-1">The people behind the build.</h2>
-              <p className="fade-in fade-in-delay-2">Eleven members. One mission. Every role matters.</p>
+              <p className="fade-in fade-in-delay-2">Twelve members. One mission. Every role matters.</p>
             </div>
             <div className="team-grid">
-              {team.map((m: { name: string; role: string; photo: string }, i: number) => (
+              {team.map((m: { name: string; role: string; photo?: string }, i: number) => (
                 <div key={i} className={`team-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
                   <div className="team-photo">
-                    <img src={asset(m.photo)} alt={m.name} />
+                    {m.photo ? (
+                      <img src={asset(m.photo)} alt={m.name} />
+                    ) : (
+                      <span className="team-initial" aria-hidden="true">{m.name.charAt(0)}</span>
+                    )}
                   </div>
                   <div className="team-info">
                     <h3>{m.name}</h3>
