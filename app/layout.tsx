@@ -9,7 +9,7 @@ const jetbrainsMono = JetBrains_Mono({ weight: ["400", "500", "600"], subsets: [
 
 export const metadata: Metadata = {
   title: "Variable Velocity — Team 36397",
-  description: "FIRST Tech Challenge Team 36397 — Dream. Build. Ascend.",
+  description: "FIRST Tech Challenge Team 36397 — Dream. Build. Inspire.",
   icons: { icon: "/logo.png" },
 };
 

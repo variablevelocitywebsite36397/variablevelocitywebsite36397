@@ -461,7 +461,7 @@ export default function Page() {
 
       <footer>
         <div className="wrap foot-row">
-          <div className="foot-note">© 2026 Variable Velocity — FTC Team 36397 · Dream. Build. Ascend.</div>
+          <div className="foot-note">© 2026 Variable Velocity — FTC Team 36397 · Dream. Build. Inspire.</div>
           <div className="foot-links">
             <a href="#top">Home</a>
           </div>

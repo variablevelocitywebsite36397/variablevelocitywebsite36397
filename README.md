@@ -2,7 +2,7 @@
 
 Official website for **Variable Velocity**, FIRST Tech Challenge Team 36397.
 
-**Dream. Build. Ascend.**
+**Dream. Build. Inspire.**
 
 ## About
 
