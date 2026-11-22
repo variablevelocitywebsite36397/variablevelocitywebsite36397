@@ -1,0 +1,32 @@
+{
+  "title": "Newark Library Robotics Showcase",
+  "eyebrow": "Library Outreach",
+  "description1": "At the Newark Library, Variable Velocity gave a presentation to a full room of kids and families about who we are, what FIRST Tech Challenge is and how a student team builds a competition robot.",
+  "description2": "After the presentation, we demonstrated our robot live on the floor and invited kids to gather around and see its mechanisms up close, showing them that robotics is something they can do too.",
+  "bullets": [
+    "Presented our team and the FIRST Tech Challenge program to the community",
+    "Ran a live robot demo in front of a packed room",
+    "Let kids see the robot's mechanisms up close",
+    "Encouraged young students to get involved in robotics"
+  ],
+  "photos": [
+    {
+      "src": "/outreach/newark-library/1.jpg",
+      "alt": "Variable Velocity presenting to the audience at the Newark Library"
+    },
+    {
+      "src": "/outreach/newark-library/2.jpg",
+      "alt": "Kids gathering around the robot with team members"
+    },
+    {
+      "src": "/outreach/newark-library/3.jpg",
+      "alt": "Team members running a robot demo for the audience"
+    },
+    {
+      "src": "/outreach/newark-library/4.jpg",
+      "alt": "Robot demonstration in the Newark Library community room"
+    }
+  ],
+  "order": 4,
+  "photosFirst": false
+}

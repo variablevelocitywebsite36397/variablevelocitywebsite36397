@@ -1,0 +1,32 @@
+{
+  "title": "Bay Area Science Festival Robot Zoo at UCSF",
+  "eyebrow": "Science Festival",
+  "description1": "Variable Velocity was one of the FTC teams featured at the Bay Area Science Festival's Robot Zoo, held at UCSF. We set up a team booth and a practice field with a DECODE goal so visitors could see a real competition robot in action.",
+  "description2": "Kids took turns driving and playing with the robot alongside our team members, while others stopped by our table to learn about the team and FIRST Tech Challenge.",
+  "bullets": [
+    "Featured team at the Bay Area Science Festival Robot Zoo",
+    "Set up a practice field with a DECODE goal for live demos",
+    "Let kids drive and interact with the robot",
+    "Shared our team story with festival visitors at our booth"
+  ],
+  "photos": [
+    {
+      "src": "/outreach/ucsf-science-festival/1.jpg",
+      "alt": "Variable Velocity team at their booth and practice field at the Robot Zoo"
+    },
+    {
+      "src": "/outreach/ucsf-science-festival/2.jpg",
+      "alt": "Kids driving and playing with the robot at the science festival"
+    },
+    {
+      "src": "/outreach/ucsf-science-festival/3.jpg",
+      "alt": "Team member talking with a young visitor at the booth table"
+    },
+    {
+      "src": "/outreach/ucsf-science-festival/4.jpg",
+      "alt": "Team members at the Bay Area Science Festival Robot Zoo banner"
+    }
+  ],
+  "order": 6,
+  "photosFirst": false
+}

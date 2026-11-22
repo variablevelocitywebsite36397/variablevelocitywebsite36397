@@ -226,9 +226,9 @@ export default function Page() {
               <span className="eyebrow fade-in">Community Outreach</span>
               <h2 className="fade-in fade-in-delay-1">Bringing more people onto the field.</h2>
               <p className="fade-in fade-in-delay-2">
-                We believe STEM should be accessible to everyone. From summer workshops that recruit
-                the next generation of builders to inclusive teaching sessions for special needs
-                students, Variable Velocity is committed to opening doors — not just winning matches.
+                We believe STEM should be accessible to everyone. From summer workshops and inclusive
+                teaching sessions to library demos, maker fairs and science festivals, Variable Velocity
+                is committed to opening doors — not just winning matches.
               </p>
             </div>
 

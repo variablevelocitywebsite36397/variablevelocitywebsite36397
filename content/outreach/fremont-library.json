@@ -1,0 +1,32 @@
+{
+  "title": "Fremont Library Robot Demo",
+  "eyebrow": "Library Outreach",
+  "description1": "Variable Velocity visited the Fremont Library to share robotics with some of our youngest audiences yet. Kids and parents gathered in the community room to watch our competition robot in action.",
+  "description2": "Team members drove the robot, answered questions and explained how it works in simple, hands-on terms, sparking curiosity about engineering and coding in elementary-age kids.",
+  "bullets": [
+    "Brought our competition robot to the Fremont Library",
+    "Ran live driving demos for young kids and families",
+    "Answered questions about how robots are built and coded",
+    "Sparked early interest in STEM and FIRST programs"
+  ],
+  "photos": [
+    {
+      "src": "/outreach/fremont-library/1.jpg",
+      "alt": "Kids watching the robot demo at the Fremont Library"
+    },
+    {
+      "src": "/outreach/fremont-library/2.jpg",
+      "alt": "Young kids gathered around the robot with team members"
+    },
+    {
+      "src": "/outreach/fremont-library/3.jpg",
+      "alt": "Variable Velocity banner and robot demo in the library community room"
+    },
+    {
+      "src": "/outreach/fremont-library/4.jpg",
+      "alt": "Team members demonstrating the robot to children"
+    }
+  ],
+  "order": 5,
+  "photosFirst": true
+}
