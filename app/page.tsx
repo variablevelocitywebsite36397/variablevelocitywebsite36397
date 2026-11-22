@@ -200,7 +200,7 @@ export default function Page() {
               <p className="fade-in fade-in-delay-2">Twelve members. One mission. Every role matters.</p>
             </div>
             <div className="team-grid">
-              {team.map((m: { name: string; role: string; photo?: string }, i: number) => (
+              {team.map((m: { name: string; grade?: string; role: string; photo?: string }, i: number) => (
                 <div key={i} className={`team-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
                   <div className="team-photo">
                     {m.photo ? (
@@ -210,7 +210,7 @@ export default function Page() {
                     )}
                   </div>
                   <div className="team-info">
-                    <h3>{m.name}</h3>
+                    <h3>{m.name}{m.grade && <span className="grade"> · {m.grade}</span>}</h3>
                     <div className="role">{m.role}</div>
                   </div>
                 </div>

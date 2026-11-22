@@ -146,6 +146,7 @@ export default defineConfig({
         format: "json",
         fields: [
           { type: "string", name: "name", label: "Name", required: true, isTitle: true },
+          { type: "string", name: "grade", label: "Grade" },
           { type: "string", name: "role", label: "Role" },
           { type: "image", name: "photo", label: "Photo" },
           { type: "number", name: "order", label: "Display Order" },
