@@ -160,7 +160,7 @@ export default function Page() {
               <span className="eyebrow fade-in">Our Journey</span>
               <h2 className="fade-in fade-in-delay-1">The season so far.</h2>
               <p className="fade-in fade-in-delay-2">
-                A running log of milestones as Variable Velocity builds toward the DECODE season.
+                A running log of milestones as Variable Velocity builds toward the BIO BUZZ season.
               </p>
             </div>
             <div className="timeline">
