@@ -342,3 +342,13 @@ a.connect-card{color:inherit;text-decoration:none;cursor:pointer;}
 .outreach-group{margin-top:80px;}
 .outreach-group-head{margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--line-strong);}
 .outreach-group-head h3{font-size:clamp(1.6rem,3vw,2.1rem);color:var(--white);margin-top:8px;}
+
+/* Sponsors */
+.sponsor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.sponsor-card{background:#fff;border:1px solid var(--line-strong);height:150px;display:flex;align-items:center;justify-content:center;padding:28px 36px;transition:border-color .2s, transform .2s, box-shadow .2s;}
+.sponsor-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 28px rgba(255,10,36,.18);}
+.sponsor-card img{max-width:100%;width:auto;object-fit:contain;}
+.sponsor-cta{margin-top:32px;color:var(--fog);font-size:.95rem;}
+.sponsor-cta a{color:var(--ember);}
+@media (max-width: 900px){ .sponsor-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width: 560px){ .sponsor-grid{grid-template-columns:1fr;} }

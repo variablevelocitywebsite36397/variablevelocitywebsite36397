@@ -206,6 +206,19 @@ export default defineConfig({
         ],
       },
       {
+        name: "sponsor",
+        label: "Sponsors",
+        path: "content/sponsors",
+        format: "json",
+        fields: [
+          { type: "string", name: "name", label: "Name", required: true, isTitle: true },
+          { type: "image", name: "logo", label: "Logo" },
+          { type: "number", name: "logoHeight", label: "Logo Height (px)" },
+          { type: "string", name: "url", label: "Website" },
+          { type: "number", name: "order", label: "Display Order" },
+        ],
+      },
+      {
         name: "resource",
         label: "Resources",
         path: "content/resources",

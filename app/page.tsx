@@ -22,6 +22,7 @@ export default function Page() {
   const timeline = readCollection("content/timeline");
   const outreach = readCollection("content/outreach");
   const resources = readCollection("content/resources");
+  const sponsors = readCollection("content/sponsors");
 
   const { hero, about, values, robot, connect, contact, donate } = data;
 
@@ -44,6 +45,7 @@ export default function Page() {
             <a href="#robot">Our Robot</a>
             <a href="#journey">Competition History</a>
             <a href="#outreach">Outreach</a>
+            <a href="#sponsors">Sponsors</a>
             <a href="#support">NPO/Donate</a>
             <a href="#contact">Contact Us</a>
           </nav>
@@ -302,6 +304,37 @@ export default function Page() {
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* SPONSORS */}
+        <section id="sponsors">
+          <div className="wrap">
+            <div className="section-head">
+              <span className="eyebrow fade-in">Our Sponsors</span>
+              <h2 className="fade-in fade-in-delay-1">Powered by our partners.</h2>
+              <p className="fade-in fade-in-delay-2">
+                Thank you to the organizations that make our season possible — from the parts on our robot to the
+                programs that bring robotics to more students.
+              </p>
+            </div>
+            <div className="sponsor-grid">
+              {sponsors.map((sp: { name: string; logo: string; logoHeight?: number; url: string }, i: number) => (
+                <a
+                  key={i}
+                  href={sp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`sponsor-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}
+                  aria-label={`${sp.name} (opens in a new tab)`}
+                >
+                  <img src={asset(sp.logo)} alt={`${sp.name} logo`} style={{ height: sp.logoHeight ?? 64 }} />
+                </a>
+              ))}
+            </div>
+            <p className="sponsor-cta fade-in">
+              Interested in sponsoring Variable Velocity? <a href="#support">See how to support us →</a>
+            </p>
           </div>
         </section>
 
