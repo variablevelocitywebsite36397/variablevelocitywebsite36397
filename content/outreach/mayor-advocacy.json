@@ -1,6 +1,7 @@
 {
   "title": "Meeting with Mayor Raj Salwan",
-  "eyebrow": "Advocacy \u00b7 24 person hours of outreach",
+  "eyebrow": "Advocacy · 24 person hours of outreach",
+  "category": "advocacy",
   "description1": "Why we went: we want more students in our city to have access to robotics and STEM, and city leaders can help make that happen.",
   "description2": "Outcome: we built a connection between student robotics teams and city leadership, and learned how the Mayor's education plans could support more STEM programs.",
   "bullets": [
@@ -26,6 +27,5 @@
       "alt": "Group photo with Mayor Raj Salwan and event attendees"
     }
   ],
-  "order": 7,
-  "photosFirst": true
+  "order": 7
 }

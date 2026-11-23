@@ -17,7 +17,7 @@
     "paragraph1": "Variable Velocity is FIRST Tech Challenge Team 36397 — a student-run team that treats every match like a system with changing conditions. We design robots that hold precision whether they’re moving fast, slow, or somewhere in between.",
     "paragraph2": "Our process is iterative and CAD-first: prototype, test on the field, measure what actually happened, and redesign. We value the data as much as the result, and we document our reasoning so the next build season starts smarter than the last.",
     "paragraph3": "Off the field, we bring that same engineering mindset to our community — running workshops, mentoring younger teams, and making STEM feel approachable to students who haven’t found their way into it yet.",
-"teamPhoto": "/team-photo.jpg"
+    "teamPhoto": "/team-photo.jpg"
   },
   "values": {
     "eyebrow": "Mission & Values",
@@ -68,24 +68,28 @@
     "heading": "How We Connect",
     "items": [
       {
+        "slug": "first",
         "title": "With FIRST",
         "description": "We host workshops and volunteer at FLL and FTC events!",
         "photo": "/summer-shadow/IMG_0885.jpeg"
       },
       {
+        "slug": "teams",
         "title": "With other Teams",
         "description": "We offer our space, our tools, and our experience to assist other teams!",
         "photo": "/summer-shadow/Build_SummerKids.jpeg"
       },
       {
+        "slug": "community",
         "title": "Within the Community",
         "description": "We provide demonstrations to showcase FIRST robotics at local events, schools, libraries, and other community events!",
         "photo": "/fcsn/FCSN Teaching.jpeg"
       },
       {
-        "title": "With Professionals",
-        "description": "We meet with local professionals to increase our knowledge and explore opportunities for the future!",
-        "photo": "/fcsn/IMG_0899.jpeg"
+        "slug": "advocacy",
+        "title": "Through Advocacy",
+        "description": "We meet with city leaders to expand access to robotics and STEM for students in our community!",
+        "photo": "/outreach/mayor-advocacy/1.jpg"
       }
     ]
   },

@@ -1,6 +1,7 @@
 {
   "title": "Reid-Hillview Airport Maker Fair",
   "eyebrow": "Community Fair",
+  "category": "community",
   "description1": "Variable Velocity set up a booth at the Reid-Hillview Airport Maker Fair, sharing a FIRST Tech Challenge tent with fellow team Alphabots 16026. We brought our competition robot, a display board on our season and our team banner to introduce families to FIRST robotics.",
   "description2": "Team members ran live driving demos on a practice field, explained how the robot is designed, built and programmed, and let curious kids and parents get up close. We also connected with Civil Air Patrol cadets at the event.",
   "bullets": [
@@ -27,6 +28,5 @@
       "alt": "Kids getting a close look at the robot at the maker fair"
     }
   ],
-  "order": 3,
-  "photosFirst": true
+  "order": 6
 }

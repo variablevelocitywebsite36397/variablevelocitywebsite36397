@@ -40,7 +40,7 @@ export default function Page() {
           </a>
           <nav className="links">
             <a href="#top">Home</a>
-            <a href="#about">Team</a>
+            <a href="#team">Team</a>
             <a href="#robot">Our Robot</a>
             <a href="#journey">Competition History</a>
             <a href="#outreach">Outreach</a>
@@ -83,7 +83,7 @@ export default function Page() {
         </section>
 
         {/* ABOUT */}
-        <section id="about">
+        <section id="team">
           <div className="wrap about-grid">
             <div className="about-copy">
               <span className="eyebrow fade-in">{about.eyebrow}</span>
@@ -96,6 +96,34 @@ export default function Page() {
             </div>
             <div className="about-photo fade-right fade-in-delay-1">
               <img src={asset(about.teamPhoto)} alt="Variable Velocity team" />
+            </div>
+          </div>
+        </section>
+
+        {/* TEAM */}
+        <section id="team-members">
+          <div className="wrap">
+            <div className="section-head">
+              <span className="eyebrow fade-in">Meet the Team</span>
+              <h2 className="fade-in fade-in-delay-1">The people behind the build.</h2>
+              <p className="fade-in fade-in-delay-2">Twelve members. One mission. Every role matters.</p>
+            </div>
+            <div className="team-grid">
+              {team.map((m: { name: string; grade?: string; role: string; photo?: string }, i: number) => (
+                <div key={i} className={`team-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
+                  <div className="team-photo">
+                    {m.photo ? (
+                      <img src={asset(m.photo)} alt={m.name} />
+                    ) : (
+                      <span className="team-initial" aria-hidden="true">{m.name.charAt(0)}</span>
+                    )}
+                  </div>
+                  <div className="team-info">
+                    <h3>{m.name}{m.grade && <span className="grade"> · {m.grade}</span>}</h3>
+                    <div className="role">{m.role}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -191,135 +219,89 @@ export default function Page() {
           </div>
         </section>
 
-        {/* TEAM */}
-        <section id="team">
-          <div className="wrap">
-            <div className="section-head">
-              <span className="eyebrow fade-in">Meet the Team</span>
-              <h2 className="fade-in fade-in-delay-1">The people behind the build.</h2>
-              <p className="fade-in fade-in-delay-2">Twelve members. One mission. Every role matters.</p>
-            </div>
-            <div className="team-grid">
-              {team.map((m: { name: string; grade?: string; role: string; photo?: string }, i: number) => (
-                <div key={i} className={`team-card fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
-                  <div className="team-photo">
-                    {m.photo ? (
-                      <img src={asset(m.photo)} alt={m.name} />
-                    ) : (
-                      <span className="team-initial" aria-hidden="true">{m.name.charAt(0)}</span>
-                    )}
-                  </div>
-                  <div className="team-info">
-                    <h3>{m.name}{m.grade && <span className="grade"> · {m.grade}</span>}</h3>
-                    <div className="role">{m.role}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* OUTREACH */}
         <section id="outreach">
           <div className="wrap">
             <div className="section-head">
               <span className="eyebrow fade-in">Community Outreach</span>
-              <h2 className="fade-in fade-in-delay-1">Bringing more people onto the field.</h2>
+              <h2 className="fade-in fade-in-delay-1">{connect.heading}</h2>
               <p className="fade-in fade-in-delay-2">
-                We believe STEM should be accessible to everyone. From summer workshops and inclusive
-                teaching sessions to library demos, maker fairs and science festivals, Variable Velocity
-                is committed to opening doors — not just winning matches.
+                We believe STEM should be accessible to everyone. Here is how Variable Velocity connects with
+                FIRST, other teams and our community — select an area to see the events behind it.
               </p>
             </div>
-
-            {outreach.map((program: {
-              title: string;
-              eyebrow: string;
-              description1: string;
-              description2: string;
-              bullets: string[];
-              photos: { src: string; alt: string }[];
-              photosFirst: boolean;
-            }, i: number) => (
-              <div key={i} className={`outreach-program fade-in fade-in-delay-${i + 1}`}>
-                <div className="outreach-program-body">
-                  {program.photosFirst && (
-                    <div className="outreach-photos">
-                      {program.photos.map((p, j) => (
-                        <div key={j} className="photo-slot">
-                          <img src={asset(p.src)} alt={p.alt} />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <div className="outreach-program-text">
-                    <span className="eyebrow">{program.eyebrow}</span>
-                    <h3>{program.title}</h3>
-                    <p>{program.description1}</p>
-                    <p>{program.description2}</p>
-                    <ul>
-                      {program.bullets.map((b, j) => (
-                        <li key={j}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  {!program.photosFirst && (
-                    <div className="outreach-photos">
-                      {program.photos.map((p, j) => (
-                        <div key={j} className="photo-slot">
-                          <img src={asset(p.src)} alt={p.alt} />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* HOW WE CONNECT */}
-        <section id="connect">
-          <div className="wrap">
-            <div className="section-head" style={{ textAlign: "center" as const, maxWidth: "none" }}>
-              <h2 className="fade-in">{connect.heading}</h2>
-            </div>
             <div className="connect-grid">
-              {connect.items.map((item: { title: string; description: string; photo: string }, i: number) => (
-                <div key={i} className={`connect-card fade-in fade-in-delay-${i + 1}`}>
-                  <div className="connect-text">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                  <div className="connect-photo">
-                    <img src={asset(item.photo)} alt={item.title} />
-                  </div>
-                </div>
-              ))}
+              {connect.items.map((item: { slug: string; title: string; description: string; photo: string }, i: number) => {
+                const hasEvents = outreach.some((p: { category?: string }) => p.category === item.slug);
+                const card = (
+                  <>
+                    <div className="connect-text">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                      {hasEvents && <span className="connect-more">See events ↓</span>}
+                    </div>
+                    <div className="connect-photo">
+                      <img src={asset(item.photo)} alt={item.title} />
+                    </div>
+                  </>
+                );
+                return hasEvents ? (
+                  <a key={i} href={`#outreach-${item.slug}`} className={`connect-card fade-in fade-in-delay-${i + 1}`}>{card}</a>
+                ) : (
+                  <div key={i} className={`connect-card fade-in fade-in-delay-${i + 1}`}>{card}</div>
+                );
+              })}
             </div>
-          </div>
-        </section>
 
-        {/* RESOURCES */}
-        <section id="resources">
-          <div className="wrap">
-            <div className="section-head">
-              <span className="eyebrow fade-in">Resources</span>
-              <h2 className="fade-in fade-in-delay-1">For teams, by teams.</h2>
-            </div>
-            <div className="resource-list">
-              {resources.map((r: { title: string; description: string; url: string }, i: number) => (
-                <div key={i} className={`resource-item fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
-                  <div>
-                    <div className="rtitle">{r.title}</div>
-                    <div className="rdesc">{r.description}</div>
+            {connect.items.map((group: { slug: string; title: string; description: string }) => {
+              const programs = outreach.filter((p: { category?: string }) => p.category === group.slug);
+              if (programs.length === 0) return null;
+              return (
+                <div key={group.slug} id={`outreach-${group.slug}`} className="outreach-group">
+                  <div className="outreach-group-head fade-in">
+                    <span className="eyebrow">How We Connect</span>
+                    <h3>{group.title}</h3>
                   </div>
-                  <a className="rlink" href={r.url} target="_blank" rel="noopener noreferrer">
-                    Visit ↗
-                  </a>
+                  {programs.map((program: {
+                    title: string;
+                    eyebrow: string;
+                    description1: string;
+                    description2: string;
+                    bullets: string[];
+                    photos: { src: string; alt: string }[];
+                  }, i: number) => {
+                    const photos = (
+                      <div className="outreach-photos">
+                        {program.photos.map((ph, j) => (
+                          <div key={j} className="photo-slot">
+                            <img src={asset(ph.src)} alt={ph.alt} />
+                          </div>
+                        ))}
+                      </div>
+                    );
+                    return (
+                      <div key={i} className="outreach-program fade-in">
+                        <div className="outreach-program-body">
+                          {i % 2 === 1 && photos}
+                          <div className="outreach-program-text">
+                            <span className="eyebrow">{program.eyebrow}</span>
+                            <h3>{program.title}</h3>
+                            <p>{program.description1}</p>
+                            <p>{program.description2}</p>
+                            <ul>
+                              {program.bullets.map((b, j) => (
+                                <li key={j}>{b}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          {i % 2 === 0 && photos}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </section>
 
@@ -370,6 +352,29 @@ export default function Page() {
                   <div className="zelle-name">{donate.zelleName}</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* RESOURCES */}
+        <section id="resources">
+          <div className="wrap">
+            <div className="section-head">
+              <span className="eyebrow fade-in">Resources</span>
+              <h2 className="fade-in fade-in-delay-1">For teams, by teams.</h2>
+            </div>
+            <div className="resource-list">
+              {resources.map((r: { title: string; description: string; url: string }, i: number) => (
+                <div key={i} className={`resource-item fade-in fade-in-delay-${Math.min(i + 1, 7)}`}>
+                  <div>
+                    <div className="rtitle">{r.title}</div>
+                    <div className="rdesc">{r.description}</div>
+                  </div>
+                  <a className="rlink" href={r.url} target="_blank" rel="noopener noreferrer">
+                    Visit ↗
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -172,6 +172,17 @@ export default defineConfig({
         fields: [
           { type: "string", name: "title", label: "Title", required: true, isTitle: true },
           { type: "string", name: "eyebrow", label: "Eyebrow Text" },
+          {
+            type: "string",
+            name: "category",
+            label: "How We Connect Group",
+            options: [
+              { value: "first", label: "With FIRST" },
+              { value: "teams", label: "With other Teams" },
+              { value: "community", label: "Within the Community" },
+              { value: "advocacy", label: "Through Advocacy" },
+            ],
+          },
           { type: "string", name: "description1", label: "Description Paragraph 1", ui: { component: "textarea" } },
           { type: "string", name: "description2", label: "Description Paragraph 2", ui: { component: "textarea" } },
           {
