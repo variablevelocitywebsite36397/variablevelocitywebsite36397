@@ -1,0 +1,32 @@
+{
+  "title": "Meeting Fremont Mayor Raj Salwan",
+  "eyebrow": "Advocacy",
+  "description1": "Variable Velocity met with Fremont Mayor Raj Salwan at an event hosted at BASIS Independent Fremont. Our team took the stage to introduce Variable Velocity, share our journey in FIRST Tech Challenge, and present to an audience of students and families.",
+  "description2": "Team members joined a panel discussion with the Mayor, speaking about the value of hands-on STEM and robotics for young people in our city and why community support for programs like FIRST matters.",
+  "bullets": [
+    "Met Fremont Mayor Raj Salwan",
+    "Presented our team and FIRST Tech Challenge on stage",
+    "Joined a panel discussion with the Mayor",
+    "Advocated for STEM and robotics opportunities for Fremont students"
+  ],
+  "photos": [
+    {
+      "src": "/outreach/mayor-advocacy/1.jpg",
+      "alt": "Variable Velocity team with Fremont Mayor Raj Salwan"
+    },
+    {
+      "src": "/outreach/mayor-advocacy/2.jpg",
+      "alt": "Team members in a panel discussion with Mayor Raj Salwan"
+    },
+    {
+      "src": "/outreach/mayor-advocacy/3.jpg",
+      "alt": "Variable Velocity presenting on stage at BASIS Independent Fremont"
+    },
+    {
+      "src": "/outreach/mayor-advocacy/4.jpg",
+      "alt": "Group photo with Mayor Raj Salwan and event attendees"
+    }
+  ],
+  "order": 7,
+  "photosFirst": true
+}
